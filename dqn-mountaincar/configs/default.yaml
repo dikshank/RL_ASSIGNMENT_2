@@ -1,0 +1,21 @@
+env:
+  name: MountainCar-v0
+  max_episode_steps: 2000
+
+train:
+  total_timesteps: 300000        # increase for convergence
+  gamma: 0.99
+  lr: 0.0005                     # lower than 1e-3 → more stable
+  batch_size: 64
+  buffer_size: 100000            # larger buffer helps
+  min_buffer_size: 5000          # avoid early bad updates
+  target_update_freq: 1000
+  rho: 1
+
+exploration:
+  epsilon_start: 1.0
+  epsilon_end: 0.02              # slightly lower → better final policy
+  epsilon_decay_steps: 150000    # slower decay (important)
+
+network:
+  hidden_dim: 128
